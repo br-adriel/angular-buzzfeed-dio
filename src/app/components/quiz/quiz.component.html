@@ -1,14 +1,14 @@
 <div>
   <img src="assets/img/logo.png" alt="" />
-  <h2>Título</h2>
+  <h2>{{ title }}</h2>
 </div>
 <div>
-  <h3>Questão selecionada</h3>
+  <h3>{{ selectedQuestion.question }}</h3>
 </div>
 <div>
   <button type="button">option name</button>
 </div>
-<div>
+<div *ngIf="finished">
   <h3>O seu resultado é</h3>
   <p>Resposta selecionada</p>
 </div>
