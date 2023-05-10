@@ -25,14 +25,27 @@ export class QuizComponent implements OnInit {
     this.nextRound();
   }
 
-  public nextRound(): void {
+  private nextRound(): void {
     this.questionIndex++;
 
     if (this.questionIndex > this.questionMaxIndex) {
       this.finished = true;
+      this.selectedAnswer = quizQuestions.results[this.getResult()];
     } else {
       this.selectedQuestion = this.questions[this.questionIndex];
     }
+  }
+
+  private getResult(): keyof typeof quizQuestions.results {
+    return this.answers.reduce((prev, curr, i, arr) => {
+      if (
+        arr.filter((item) => item === prev).length >
+        arr.filter((item) => item === curr).length
+      ) {
+        return prev;
+      }
+      return curr;
+    }) as keyof typeof quizQuestions.results;
   }
 
   ngOnInit(): void {
