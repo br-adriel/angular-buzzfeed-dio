@@ -1,9 +1,9 @@
 <section>
   <h2>{{ title }}</h2>
 
-  <div *ngIf="!finished">
+  <div *ngIf="!finished" class="question">
     <h3>{{ selectedQuestion.question }}</h3>
-    <div>
+    <div class="options">
       <button
         type="button"
         *ngFor="let option of selectedQuestion.options"
@@ -14,8 +14,7 @@
     </div>
   </div>
 
-  <div *ngIf="finished">
-    <h3>O seu resultado é</h3>
-    <p>{{ selectedAnswer }}</p>
+  <div *ngIf="finished" class="result">
+    <h3>{{ selectedAnswer }}</h3>
   </div>
 </section>
